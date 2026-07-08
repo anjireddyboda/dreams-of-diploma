@@ -1,0 +1,5 @@
+{
+  "name": "dreams-of-diploma",
+  "private": true,
+  "engines": { "node": ">=18" }
+}

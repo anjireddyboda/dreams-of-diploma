@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Certificate — Dreams of Diploma</title>
+<meta name="robots" content="noindex">
+<style>
+  :root {
+    --navy: #0F172A;
+    --gold: #F59E0B;
+    --gold-dark: #B45309;
+    --text: #334155;
+    --border: #E2E8F0;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: #E7EAF2;
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 16px;
+  }
+  .toolbar {
+    max-width: 1000px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-family: -apple-system, sans-serif;
+  }
+  .toolbar h1 { font-size: 1rem; margin: 0; color: var(--navy); }
+  .toolbar button {
+    font-family: -apple-system, sans-serif;
+    background: var(--gold);
+    color: var(--navy);
+    border: none;
+    padding: 10px 22px;
+    border-radius: 999px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .certificate {
+    width: 1000px;
+    max-width: 100%;
+    aspect-ratio: 1000 / 720;
+    background: #fff;
+    border: 10px solid var(--navy);
+    outline: 2px solid var(--gold);
+    outline-offset: -18px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 70px;
+  }
+  .certificate::before, .certificate::after {
+    content: "";
+    position: absolute;
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(245,158,11,0.14), transparent 70%);
+  }
+  .certificate::before { top: 30px; left: 30px; }
+  .certificate::after { bottom: 30px; right: 30px; }
+  .brand-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: -apple-system, sans-serif;
+    font-weight: 800;
+    color: var(--navy);
+    font-size: 1.1rem;
+    letter-spacing: 0.02em;
+  }
+  .eyebrow {
+    font-family: -apple-system, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    margin-top: 22px;
+  }
+  h1.cert-title {
+    font-size: 2.6rem;
+    color: var(--navy);
+    margin: 10px 0 6px;
+    font-weight: 700;
+  }
+  .cert-sub {
+    font-family: -apple-system, sans-serif;
+    font-size: 0.95rem;
+    color: var(--text);
+    margin-bottom: 26px;
+  }
+  .recipient {
+    font-size: 2.1rem;
+    color: var(--gold-dark);
+    font-weight: 700;
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 8px;
+    margin-bottom: 22px;
+    min-width: 60%;
+  }
+  .reason {
+    max-width: 640px;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--text);
+  }
+  .footer-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 44px;
+    font-family: -apple-system, sans-serif;
+  }
+  .sig-block { text-align: center; }
+  .sig-line { width: 200px; border-top: 1.5px solid var(--navy); margin-bottom: 6px; }
+  .sig-name { font-weight: 700; color: var(--navy); font-size: 0.9rem; }
+  .sig-role { font-size: 0.78rem; color: var(--text); }
+  .date-block { text-align: center; font-family: -apple-system, sans-serif; }
+  .date-value { font-weight: 700; color: var(--navy); font-size: 0.9rem; }
+  .date-label { font-size: 0.78rem; color: var(--text); }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .toolbar { display: none; }
+    .certificate { border-width: 8px; box-shadow: none; }
+    @page { size: landscape; margin: 0.3in; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="toolbar">
+    <h1>Certificate generator — Dreams of Diploma</h1>
+    <button onclick="window.print()">Print / Save as PDF</button>
+  </div>
+
+  <div class="certificate">
+    <div class="brand-row">
+      <svg width="26" height="26" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <rect width="40" height="40" rx="10" fill="#0F172A"/>
+        <path d="M9 26 C 9 17, 15 12, 20 12 C 25 12, 31 17, 31 26" stroke="#F59E0B" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+        <circle cx="9" cy="26" r="3" fill="#F59E0B"/>
+        <circle cx="31" cy="26" r="3" fill="#F8FAFC"/>
+      </svg>
+      Dreams of Diploma
+    </div>
+
+    <p class="eyebrow" id="cert-type">Certificate of Appreciation</p>
+    <h1 class="cert-title">Certificate of Recognition</h1>
+    <p class="cert-sub">This certificate is proudly presented to</p>
+
+    <div class="recipient" id="cert-name">Recipient Name</div>
+
+    <p class="reason" id="cert-reason">
+      In recognition of valuable contribution to Dreams of Diploma, and for embodying
+      our belief that students build students.
+    </p>
+
+    <div class="footer-row">
+      <div class="sig-block">
+        <div class="sig-line"></div>
+        <div class="sig-name">Anji Reddy Boda</div>
+        <div class="sig-role">Founder, Dreams of Diploma</div>
+      </div>
+      <div class="date-block">
+        <div class="date-value" id="cert-date">—</div>
+        <div class="date-label">Date issued</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Fill the certificate from URL parameters — no editing needed per person.
+    // Example:
+    // certificate.html?name=Priya%20Sharma&role=ambassador&reason=Leading%20outreach%20at%20Government%20Polytechnic%20Chegunta&date=08%20Jul%202026
+    var params = new URLSearchParams(window.location.search);
+
+    var roleCopy = {
+      ambassador: { type: "Certificate of Appreciation", title: "Campus Ambassador", reason: "For leading Dreams of Diploma's presence on campus and helping fellow students discover real opportunities." },
+      mentor: { type: "Certificate of Appreciation", title: "Mentor", reason: "For generously giving time and guidance to diploma students navigating their next step." },
+      changemaker: { type: "Certificate of Recognition", title: "Change Maker", reason: "For creating opportunities for students through mentoring, organizing, and sharing knowledge freely." },
+      core: { type: "Certificate of Recognition", title: "Core Team", reason: "For sincere, sustained contribution to building Dreams of Diploma." }
+    };
+
+    var role = (params.get("role") || "").toLowerCase();
+    var preset = roleCopy[role];
+
+    var name = params.get("name");
+    var reason = params.get("reason");
+    var date = params.get("date");
+    var certType = params.get("type");
+    var certTitle = params.get("title");
+
+    if (name) document.getElementById("cert-name").textContent = name;
+    if (date) document.getElementById("cert-date").textContent = date;
+    else document.getElementById("cert-date").textContent = new Date().toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" });
+
+    document.getElementById("cert-type").textContent = certType || (preset && preset.type) || "Certificate of Appreciation";
+    document.querySelector(".cert-title").textContent = "Certificate of " + ((certTitle || (preset && preset.title)) ? (preset ? preset.title : certTitle) : "Recognition");
+    document.getElementById("cert-reason").textContent = reason || (preset && preset.reason) || "In recognition of valuable contribution to Dreams of Diploma, and for embodying our belief that students build students.";
+  </script>
+
+</body>
+</html>
